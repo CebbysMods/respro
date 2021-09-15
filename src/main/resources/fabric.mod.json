@@ -1,0 +1,33 @@
+{
+    "schemaVersion": 1,
+    "id": "respro",
+    "version": "${mod_version}",
+    "name": "",
+    "description": "Library For CebbyS Mods",
+    "authors": [
+        "CebbyS"
+    ],
+    "contact": {
+        "homepage": "https://github.com/CebbysMods",
+        "sources": "https://github.com/CebbysMods/celib-mod"
+    },
+    "license": "MIT",
+    "icon": "assets/respro/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "lv.cebbys.mcmods.celib.respro.Respro"
+        ]
+    },
+    "mixins": [
+        "respro.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.11.0",
+        "fabric": "*",
+        "minecraft": "1.17.x"
+    },
+    "suggests": {
+        "flamingo": "*"
+    }
+}

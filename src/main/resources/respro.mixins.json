@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "lv.cebbys.mcmods.celib.respro.mix",
+    "compatibilityLevel": "JAVA_16",
+    "mixins": [
+        "ResourceProviderMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
