@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "lv.cebbys.mcmods.celib.respro.Respro"
+        ],
+        "client": [
+            "lv.cebbys.mcmods.celib.respro.Respro"
         ]
     },
     "mixins": [

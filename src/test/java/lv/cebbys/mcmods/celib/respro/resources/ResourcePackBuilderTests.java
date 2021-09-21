@@ -1,8 +1,7 @@
 package lv.cebbys.mcmods.celib.respro.resources;
 
-import lv.cebbys.mcmods.celib.respro.imp.builders.AssetPackBuilder;
-import lv.cebbys.mcmods.celib.respro.imp.builders.ResourcePackBuilder;
-import lv.cebbys.mcmods.celib.respro.imp.resources.images.IconResource;
+import lv.cebbys.mcmods.celib.respro.imp.sides.client.builders.AssetPackBuilder;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.resources.images.IconResource;
 import net.minecraft.util.Identifier;
 import org.junit.jupiter.api.Test;
 

@@ -2,7 +2,7 @@ package lv.cebbys.mcmods.celib.respro.mix;
 
 import com.google.common.collect.ImmutableSet;
 import lv.cebbys.mcmods.celib.respro.imp.loggers.ResproLogger;
-import lv.cebbys.mcmods.celib.respro.imp.providers.Providers;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.providers.Providers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.resource.ClientBuiltinResourcePackProvider;

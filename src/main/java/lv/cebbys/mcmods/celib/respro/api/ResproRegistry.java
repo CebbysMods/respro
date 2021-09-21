@@ -3,11 +3,13 @@ package lv.cebbys.mcmods.celib.respro.api;
 import com.mojang.serialization.Lifecycle;
 import lv.cebbys.mcmods.celib.respro.Respro;
 import lv.cebbys.mcmods.celib.respro.imp.ResourceRegistry;
-import lv.cebbys.mcmods.celib.respro.imp.builders.AssetPackBuilder;
-import lv.cebbys.mcmods.celib.respro.imp.builders.AssetPackExtractor;
-import lv.cebbys.mcmods.celib.respro.imp.builders.DataPackBuilder;
-import lv.cebbys.mcmods.celib.respro.imp.builders.DataPackExtractor;
+import lv.cebbys.mcmods.celib.respro.imp.sides.client.builders.AssetPackBuilder;
+import lv.cebbys.mcmods.celib.respro.imp.sides.client.builders.AssetPackExtractor;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.builders.impl.DataPackBuilderImpl;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.builders.impl.DataPackExtractor;
 import lv.cebbys.mcmods.celib.respro.imp.loggers.ResproLogger;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.resource.ResourcePackProvider;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.MutableRegistry;
@@ -17,11 +19,18 @@ import net.minecraft.util.registry.SimpleRegistry;
 
 import java.util.function.Consumer;
 
-@SuppressWarnings("all")
 public class ResproRegistry {
-    public static final MutableRegistry<ResourcePackProvider> CLIENT_RESOURCE_PROVIDERS;
-    public static final MutableRegistry<ResourcePackProvider> SERVER_RESOURCE_PROVIDERS;
+    @Environment(EnvType.CLIENT)
+    public static final MutableRegistry<ResourcePackProvider> CLIENT_RESOURCE_PROVIDERS = new SimpleRegistry<>(
+            RegistryKey.ofRegistry(new Identifier(Respro.MODID, "client_resource_providers")),
+            Lifecycle.stable()
+    );
+    public static final MutableRegistry<ResourcePackProvider> SERVER_RESOURCE_PROVIDERS = new SimpleRegistry<>(
+            RegistryKey.ofRegistry(new Identifier(Respro.MODID, "server_resource_providers")),
+            Lifecycle.stable()
+    );
 
+    @Environment(EnvType.CLIENT)
     public static void registerAssetProvider(Identifier id, AssetPackProvider provider) {
         ResproLogger.debug("Registering asset pack provider: " + id);
         Registry.register(ResproRegistry.CLIENT_RESOURCE_PROVIDERS, id, provider);
@@ -32,6 +41,7 @@ public class ResproRegistry {
         Registry.register(ResproRegistry.SERVER_RESOURCE_PROVIDERS, id, provider);
     }
 
+    @Environment(EnvType.CLIENT)
     public static void registerAssetPack(Identifier id, Consumer<AssetPackBuilder> consumer) {
         ResproLogger.debug("Registering asset pack: " + id);
         AssetPackBuilder builder = AssetPackBuilder.builder(id);
@@ -39,28 +49,10 @@ public class ResproRegistry {
         ResourceRegistry.registerAssetPack(id, AssetPackExtractor.from(builder));
     }
 
-    public static void registerDataPack(Identifier id, Consumer<DataPackBuilder> consumer) {
+    public static void registerDataPack(Identifier id, Consumer<DataPackBuilderImpl> consumer) {
         ResproLogger.debug("Registering data pack: " + id);
-        DataPackBuilder builder = DataPackBuilder.builder(id);
+        DataPackBuilderImpl builder = DataPackBuilderImpl.builder(id);
         consumer.accept(builder);
         ResourceRegistry.registerDataPack(id, DataPackExtractor.from(builder));
-    }
-
-    static {
-        CLIENT_RESOURCE_PROVIDERS = new SimpleRegistry<>(
-                RegistryKey.ofRegistry(new Identifier(Respro.MODID, "client_resource_providers")),
-                Lifecycle.stable()
-        );
-        SERVER_RESOURCE_PROVIDERS = new SimpleRegistry<>(
-                RegistryKey.ofRegistry(new Identifier(Respro.MODID, "server_resource_providers")),
-                Lifecycle.stable()
-        );
-//        SERVER_RESOURCE_PROVIDERS = Registry.register((Registry) Registry.REGISTRIES,
-//                new Identifier(Respro.MODID, "common_resource_providers"),
-//                new SimpleRegistry<>(
-//                        RegistryKey.ofRegistry(new Identifier(Respro.MODID, "server_resource_providers")),
-//                        Lifecycle.stable()
-//                )
-//        );
     }
 }

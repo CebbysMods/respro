@@ -1,8 +1,8 @@
 package lv.cebbys.mcmods.celib.respro.resources;
 
-import lv.cebbys.mcmods.celib.respro.imp.parser.ResourceParser;
-import lv.cebbys.mcmods.celib.respro.imp.resources.blockstates.variant.VariantStateResource;
-import lv.cebbys.mcmods.celib.respro.imp.resources.blockstates.variant.VariantWrapper;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.parser.ResourceParser;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.resources.blockstates.variant.VariantStateResource;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.resources.blockstates.variant.VariantWrapper;
 import lv.cebbys.mcmods.celib.respro.imp.utilities.BlockProperty;
 import net.minecraft.util.Identifier;
 import org.junit.jupiter.api.Test;

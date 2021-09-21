@@ -1,6 +1,6 @@
 package lv.cebbys.mcmods.celib.respro.imp.utilities;
 
-import lv.cebbys.mcmods.celib.respro.imp.resources.Resource;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.resources.Resource;
 
 import java.util.LinkedList;
 import java.util.List;

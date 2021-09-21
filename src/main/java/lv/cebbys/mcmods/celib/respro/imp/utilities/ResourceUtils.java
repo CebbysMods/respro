@@ -1,7 +1,7 @@
 package lv.cebbys.mcmods.celib.respro.imp.utilities;
 
 import lv.cebbys.mcmods.celib.respro.imp.loggers.ResproLogger;
-import lv.cebbys.mcmods.celib.respro.imp.resources.Resource;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.resources.Resource;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -2,8 +2,8 @@ package lv.cebbys.mcmods.celib.respro.resources;
 
 
 import com.google.gson.JsonObject;
-import lv.cebbys.mcmods.celib.respro.imp.parser.ResourceParser;
-import lv.cebbys.mcmods.celib.respro.imp.resources.models.items.ItemModelResource;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.parser.ResourceParser;
+import lv.cebbys.mcmods.celib.respro.imp.sides.common.resources.models.items.ItemModelResource;
 import org.junit.jupiter.api.Test;
 
 public class ItemModelTests {

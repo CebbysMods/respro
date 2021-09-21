@@ -1,6 +1,6 @@
 package lv.cebbys.mcmods.celib.respro.resources;
 
-import lv.cebbys.mcmods.celib.respro.imp.builders.AssetPackBuilder;
+import lv.cebbys.mcmods.celib.respro.imp.sides.client.builders.AssetPackBuilder;
 import lv.cebbys.mcmods.celib.respro.imp.utilities.BlockProperty;
 import net.minecraft.util.Identifier;
 import org.junit.jupiter.api.Test;
