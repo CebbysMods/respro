@@ -1,36 +1,33 @@
 {
     "schemaVersion": 1,
     "id": "respro",
-    "version": "${mod_version}",
-    "name": "",
-    "description": "Library For CebbyS Mods",
+    "version": "${version}",
+    "name": "Resource Provider Library",
+    "description": "Dynamic approach to asset and data packs!",
     "authors": [
         "CebbyS"
     ],
     "contact": {
         "homepage": "https://github.com/CebbysMods",
-        "sources": "https://github.com/CebbysMods/celib-mod"
+        "sources": "https://github.com/CebbysMods/respro-mod"
     },
     "license": "MIT",
     "icon": "assets/respro/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "lv.cebbys.mcmods.celib.respro.Respro"
+            "lv.cebbys.mcmods.respro.Respro"
         ],
         "client": [
-            "lv.cebbys.mcmods.celib.respro.Respro"
+            "lv.cebbys.mcmods.respro.Respro"
         ]
     },
     "mixins": [
         "respro.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.11.0",
+        "fabricloader": ">=0.13.0",
         "fabric": "*",
-        "minecraft": "1.17.x"
-    },
-    "suggests": {
-        "flamingo": "*"
+        "minecraft": "1.18.x"
     }
 }
