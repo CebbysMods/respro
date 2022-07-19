@@ -1,0 +1,15 @@
+|Yarn|Minecraft|
+|---|---|
+|Identifier|ResourceLocation|
+|ResourcePack|PackResources|
+|ResourcePackProfile|Pack|
+|Registry|Registry|
+|ResourcePackProvider|RepositorySource|
+|Text|Component|
+|||
+|||
+|||
+|||
+|||
+|||
+|||
