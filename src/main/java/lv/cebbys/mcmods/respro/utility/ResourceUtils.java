@@ -1,6 +1,6 @@
 package lv.cebbys.mcmods.respro.utility;
 
-import lv.cebbys.mcmods.respro.component.resource.binary.BinaryResource;
+import lv.cebbys.mcmods.respro.component.resource.core.BinaryResource;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

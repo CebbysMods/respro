@@ -2,8 +2,11 @@ package lv.cebbys.mcmods.respro.component.mapper;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import lv.cebbys.mcmods.respro.component.resource.core.AbstractJsonObjectResource;
+import lv.cebbys.mcmods.respro.Respro;
+import lv.cebbys.mcmods.respro.component.resource.AbstractJsonObjectResource;
 import net.minecraft.resources.ResourceLocation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -12,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ResourceParser {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
 
     public JsonObject parse(Object object) {
         Class<?> clazz = object.getClass();
@@ -29,7 +33,7 @@ public class ResourceParser {
                 }
 
             } catch (Exception e) {
-//                ResproLogger.error(e, "Failed to parse field");
+                LOGGER.error(e.getMessage(), e);
             }
         });
         return json;
@@ -70,6 +74,10 @@ public class ResourceParser {
                     json.add(path, parse(s));
                 } else if (data instanceof ResourceLocation id) {
                     json.addProperty(path, id.toString());
+                } else if (data instanceof JsonObject j) {
+                    json.add(path, j);
+                } else if (data instanceof JsonArray j) {
+                    json.add(path, j);
                 } else {
                     throw new RuntimeException(data.getClass() + " parsing has not been implemented.");
                 }
@@ -105,8 +113,12 @@ public class ResourceParser {
                     array.add(map);
                 } else if (element instanceof AbstractJsonObjectResource s) {
                     array.add(parse(s));
-                } else if (data instanceof ResourceLocation id) {
+                } else if (element instanceof ResourceLocation id) {
                     array.add(id.toString());
+                } else if (element instanceof JsonObject j) {
+                    array.add(j);
+                } else if (element instanceof JsonArray j) {
+                    array.add(j);
                 } else {
                     throw new RuntimeException(element.getClass() + " Resource parsing has not been implemented.");
                 }

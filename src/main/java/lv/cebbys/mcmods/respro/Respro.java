@@ -1,7 +1,6 @@
 package lv.cebbys.mcmods.respro;
 
 import lv.cebbys.mcmods.respro.api.ResproRegistry;
-import lv.cebbys.mcmods.respro.component.core.ResproPackDump;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -22,7 +21,7 @@ public class Respro implements ModInitializer, ClientModInitializer {
             dataBuilder.setDumpMode(true);
             dataBuilder.setPackId(new ResourceLocation(RESPRO, "example_data"));
             dataBuilder.setPackProfile(profile -> {
-                profile.setPackIcon(icon -> icon.setFromResources("assets/respro/icon.png"));
+                profile.setPackIcon(icon -> icon.setFromResources(Respro.class, "assets/respro/icon.png"));
                 profile.setPackName(text -> text.setText("Respro Data Pack"));
                 profile.setPackMeta(meta -> {
                     meta.setDescription("Example Data Pack");
@@ -45,7 +44,7 @@ public class Respro implements ModInitializer, ClientModInitializer {
             assetsBuilder.setDumpMode(true);
             assetsBuilder.setPackId(new ResourceLocation(RESPRO, "example_assets"));
             assetsBuilder.setPackProfile(profile -> {
-                profile.setPackIcon(icon -> icon.setFromResources("assets/respro/icon.png"));
+                profile.setPackIcon(icon -> icon.setFromResources(Respro.class, "assets/respro/icon.png"));
                 profile.setPackName(text -> text.setText("Respro Asset Pack"));
                 profile.setPackMeta(meta -> {
                     meta.setDescription("Example Asset Pack");
@@ -53,12 +52,31 @@ public class Respro implements ModInitializer, ClientModInitializer {
                 profile.setPackInsertionPosition(Pack.Position.TOP);
                 profile.setPinned(false);
             });
-            assetsBuilder.setVariantBlockState(new ResourceLocation(RESPRO, "double_slab_block"), variants -> {
+            assetsBuilder.setVariantBlockstate(new ResourceLocation(RESPRO, "double_slab_block"), variants -> {
                 variants.setVariant(properties -> {
                     properties.setProperty("light_level", 1);
                 }, variant -> {
                     variant.setModel("double_slab_block");
                 });
+            });
+
+            assetsBuilder.setMultipartBlockstate(new ResourceLocation("a"), multipart -> {
+                multipart.setApply(model -> model.setModel("model"));
+                multipart.setWhen(
+                        when -> {
+                            when.setWhen(property -> {
+                                property.setProperty("light_level", "1", "2", "3");
+                                property.setProperty("shadow", "small", "large");
+                            });
+                            when.setWhen(property -> {
+                                property.setProperty("north", "side", "up");
+                                property.setProperty("east", "side", "up");
+                                property.setProperty("west", "side", "up");
+                            });
+                        }, model -> {
+                            model.setModel("complex");
+                        }
+                );
             });
         });
     }

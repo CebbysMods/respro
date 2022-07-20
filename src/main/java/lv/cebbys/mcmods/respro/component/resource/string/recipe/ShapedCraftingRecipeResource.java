@@ -1,7 +1,7 @@
 package lv.cebbys.mcmods.respro.component.resource.string.recipe;
 
 import lv.cebbys.mcmods.respro.component.mapper.JsonPart;
-import lv.cebbys.mcmods.respro.component.resource.core.AbstractRecipeResource;
+import lv.cebbys.mcmods.respro.component.resource.AbstractRecipeResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
 
 public class ShapedCraftingRecipeResource extends AbstractRecipeResource {

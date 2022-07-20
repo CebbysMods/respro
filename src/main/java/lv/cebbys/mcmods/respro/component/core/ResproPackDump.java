@@ -1,6 +1,6 @@
 package lv.cebbys.mcmods.respro.component.core;
 
-import lv.cebbys.mcmods.respro.component.resource.core.AbstractResource;
+import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
 import lv.cebbys.mcmods.respro.component.resource.pack.ResproAssetResources;
 import lv.cebbys.mcmods.respro.component.resource.pack.ResproDataResources;
 import lv.cebbys.mcmods.respro.component.resource.pack.ResproPackResources;
@@ -15,8 +15,8 @@ import java.io.InputStream;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static lv.cebbys.mcmods.respro.constant.ResproConstants.PACK_ICON_LOCATION;
-import static lv.cebbys.mcmods.respro.constant.ResproConstants.PACK_MCMETA_LOCATION;
+import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_ICON_LOCATION;
+import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_MCMETA_LOCATION;
 
 public class ResproPackDump {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproPackDump.class);
@@ -40,7 +40,7 @@ public class ResproPackDump {
                 throw new RuntimeException("Provided pack does not belong to assets nor data");
             }
             resources.getResources().forEach((location, resource) -> {
-                if (PACK_ICON_LOCATION.equals(location) || PACK_MCMETA_LOCATION.equals(location)) {
+                if (RESPRO_PACK_ICON_LOCATION.equals(location) || RESPRO_PACK_MCMETA_LOCATION.equals(location)) {
                     dumpResource(makeFile(pack, location.getPath()), resource);
                     return;
                 }

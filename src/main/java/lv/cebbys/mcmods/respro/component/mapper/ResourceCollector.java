@@ -1,6 +1,6 @@
 package lv.cebbys.mcmods.respro.component.mapper;
 
-import lv.cebbys.mcmods.respro.component.resource.binary.BinaryResource;
+import lv.cebbys.mcmods.respro.component.resource.core.BinaryResource;
 import lv.cebbys.mcmods.respro.utility.ResourceUtils;
 
 import java.util.LinkedList;

@@ -5,16 +5,15 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lv.cebbys.mcmods.respro.Respro;
+import lv.cebbys.mcmods.respro.api.builder.ResourceBuilder;
 import lv.cebbys.mcmods.respro.api.ResproBuilders;
-import lv.cebbys.mcmods.respro.api.ResourceBuilder;
-import lv.cebbys.mcmods.respro.api.initializer.pack.PackResourcesInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.core.PackProfileResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.pack.PackResourcesInitializer;
 import lv.cebbys.mcmods.respro.api.supplier.PackSupplier;
 import lv.cebbys.mcmods.respro.component.core.ResproPackDump;
-import lv.cebbys.mcmods.respro.component.resource.core.AbstractResource;
+import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
 import lv.cebbys.mcmods.respro.component.resource.pack.profile.PackProfileResource;
-import lv.cebbys.mcmods.respro.component.resource.string.MetaResource;
-import lv.cebbys.mcmods.respro.constant.ResproConstants;
+import lv.cebbys.mcmods.respro.component.resource.core.MetaResource;
 import lv.cebbys.mcmods.respro.exception.PackGenerationException;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackResources;
@@ -66,8 +65,8 @@ public abstract class ResproPackResources<B extends PackResourcesInitializer<?>,
     public @NotNull B setPackProfile(@NotNull Consumer<PackProfileResourceInitializer> consumer) {
         profile = new PackProfileResource();
         consumer.accept(profile);
-        setResource(ResproConstants.PACK_ICON_LOCATION, profile.getIcon());
-        setResource(ResproConstants.PACK_MCMETA_LOCATION, profile.getMeta());
+        setResource(new ResourceLocation(id.getNamespace(), PACK_ICON_PATH), profile.getIcon());
+        setResource(new ResourceLocation(id.getNamespace(), PACK_MCMETA_PATH), profile.getMeta());
         return getInstance();
     }
 
@@ -94,7 +93,6 @@ public abstract class ResproPackResources<B extends PackResourcesInitializer<?>,
     ) {
         ResourceBuilder<I, ?> builder = ResproBuilders.supplyBuilder(initializerClass);
         if (builder == null) {
-            LOGGER.error("No builder implementation of {} exists", initializerClass.getName());
             return getInstance();
         }
         builder.initialize(consumer);

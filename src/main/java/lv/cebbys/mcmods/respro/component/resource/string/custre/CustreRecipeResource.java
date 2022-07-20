@@ -3,7 +3,7 @@ package lv.cebbys.mcmods.respro.component.resource.string.custre;
 import lombok.Getter;
 import lv.cebbys.mcmods.respro.api.initializer.custre.CustreRecipeResourceInitializer;
 import lv.cebbys.mcmods.respro.component.mapper.JsonPart;
-import lv.cebbys.mcmods.respro.component.resource.core.AbstractJsonObjectResource;
+import lv.cebbys.mcmods.respro.component.resource.AbstractJsonObjectResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
