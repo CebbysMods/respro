@@ -33,10 +33,10 @@ public final class MultipartWhenResource extends AbstractJsonObjectResource impl
                 .transform(ResourceBuilder::build)
                 .transform(AbstractJsonObjectResource::getAsJsonObject)
                 .manipulate(newWhen -> {
-                    if (when.keySet().size() == 0) {
+                    if (when.entrySet().size() == 0) {
                         when = newWhen;
                         return;
-                    } else if (when.keySet().size() != 1 || !when.has("OR") || !when.get("OR").isJsonArray()) {
+                    } else if (when.entrySet().size() != 1 || !when.has("OR") || !when.get("OR").isJsonArray()) {
                         JsonArray or = new JsonArray();
                         or.add(when);
                         when = new JsonObject();
@@ -58,7 +58,7 @@ public final class MultipartWhenResource extends AbstractJsonObjectResource impl
         if (when == null) {
             throw new ResourceValidationException("MultipartWhenResource 'when' property is null");
         }
-        if (when.keySet().size() == 0) {
+        if (when.entrySet().size() == 0) {
             throw new ResourceValidationException("MultipartWhenResource 'when' property does not have any entries");
         }
     }

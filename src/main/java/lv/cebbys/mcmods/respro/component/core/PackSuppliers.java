@@ -31,13 +31,11 @@ public class PackSuppliers {
     static {
         ASSET_PROFILE_SUPPLIERS = new MappedRegistry<>(
                 ResourceKey.createRegistryKey(new ResourceLocation(Respro.MODID, "asset_profile_suppliers")),
-                Lifecycle.stable(),
-                null
+                Lifecycle.stable()
         );
         DATA_PROFILE_SUPPLIERS = new MappedRegistry<>(
                 ResourceKey.createRegistryKey(new ResourceLocation(Respro.MODID, "data_profile_suppliers")),
-                Lifecycle.stable(),
-                null
+                Lifecycle.stable()
         );
 
         RESPRO_ASSET_SUPPLIER = new PackListSupplier<Assets>() {

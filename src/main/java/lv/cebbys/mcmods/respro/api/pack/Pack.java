@@ -28,7 +28,7 @@ public class Pack extends net.minecraft.server.packs.repository.Pack {
                 supplier,
                 new TextComponent(packProfile.getName().getAsString()),
                 new TextComponent(packProfile.getMeta().getDescription()),
-                PackCompatibility.forFormat(packProfile.getMeta().getFormat(), packType),
+                PackCompatibility.forFormat(packProfile.getMeta().getFormat()),
                 packProfile.getPosition(),
                 packProfile.isPinned(),
                 PackSource.decorating(packProfile.getSource().getAsString())
