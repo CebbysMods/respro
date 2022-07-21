@@ -10,9 +10,12 @@ import lv.cebbys.mcmods.respro.utility.ResourceLocationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 @Environment(EnvType.CLIENT)
 public class ResproAssetResources extends ResproPackResources<ResproAssetResources, AssetSupplier> implements AssetResourcesInitializer {

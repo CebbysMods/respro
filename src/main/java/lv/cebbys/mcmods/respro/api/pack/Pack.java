@@ -2,7 +2,7 @@ package lv.cebbys.mcmods.respro.api.pack;
 
 import lombok.Getter;
 import lv.cebbys.mcmods.respro.component.resource.pack.profile.PackProfileResource;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
@@ -26,8 +26,8 @@ public class Pack extends net.minecraft.server.packs.repository.Pack {
                 packLocation.toString(),
                 packProfile.isAlwaysEnabled(),
                 supplier,
-                new TextComponent(packProfile.getName().getAsString()),
-                new TextComponent(packProfile.getMeta().getDescription()),
+                Component.literal(packProfile.getName().getAsString()),
+                Component.literal(packProfile.getMeta().getDescription()),
                 PackCompatibility.forFormat(packProfile.getMeta().getFormat(), packType),
                 packProfile.getPosition(),
                 packProfile.isPinned(),

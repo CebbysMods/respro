@@ -120,10 +120,10 @@ public abstract class ResproPackResources<B extends PackResourcesInitializer<?>,
     }
 
     @Override
-    public Collection<ResourceLocation> getResources(@NotNull PackType type, @NotNull String namespace, @NotNull String prefix, int maxDepth, @NotNull Predicate<String> pathFilter) {
+    public Collection<ResourceLocation> getResources(@NotNull PackType type, @NotNull String namespace, @NotNull String prefix, @NotNull Predicate<ResourceLocation> pathFilter) {
         Set<ResourceLocation> keys = new HashSet<>(resources.keySet());
         keys.removeIf(id ->
-                !(id.getPath().startsWith(prefix) && pathFilter.test(id.getPath()) && resources.get(id).belongsTo(type))
+                !(id.getPath().startsWith(prefix) && pathFilter.test(id) && resources.get(id).belongsTo(type))
         );
         return keys;
     }
