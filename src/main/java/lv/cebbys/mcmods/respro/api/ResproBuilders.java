@@ -1,5 +1,7 @@
 package lv.cebbys.mcmods.respro.api;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lv.cebbys.mcmods.respro.api.builder.ResourceBuilder;
 import lv.cebbys.mcmods.respro.api.initializer.blockstate.BlockVariantResourceInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartBlockPropertyResourceInitializer;
@@ -30,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class ResproBuilders {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproBuilders.class);
     private static final BuilderMap BUILDERS = new BuilderMap();

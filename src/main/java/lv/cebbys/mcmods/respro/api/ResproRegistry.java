@@ -1,5 +1,7 @@
 package lv.cebbys.mcmods.respro.api;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lv.cebbys.mcmods.respro.api.initializer.pack.AssetResourcesInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.pack.DataResourcesInitializer;
 import lv.cebbys.mcmods.respro.api.supplier.AssetSupplier;
@@ -13,7 +15,9 @@ import net.minecraft.core.Registry;
 
 import java.util.function.Consumer;
 
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class ResproRegistry {
+
     @Environment(EnvType.CLIENT)
     public static void registerAssets(AssetSupplier supplier) {
         Registry.register(PackSuppliers.ASSET_PROFILE_SUPPLIERS, supplier.getSupplierId(), supplier);
