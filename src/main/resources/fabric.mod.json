@@ -23,8 +23,8 @@
     "respro.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13.0",
-    "fabric": "*",
+    "fabricloader": ">=0.10.0",
+    "fabric": ">=0.40.0",
     "minecraft": ">=1.16.0"
   }
 }
